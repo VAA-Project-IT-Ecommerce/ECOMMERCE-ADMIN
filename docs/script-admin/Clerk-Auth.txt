@@ -1,0 +1,30 @@
+
+---
+
+**Tìm hiểu về Cleck Auth và Hướng dẫn Cài đặt vào Dự án**
+
+Trong dự án của mình, tôi đã **tạo một thư mục có tên "auth"**. Thư mục này sẽ bao gồm:
+
+- **Giao diện** cho chức năng đăng nhập và đăng ký
+- **Luồng xử lý** các sự kiện liên quan đến đăng nhập, đăng ký
+- **Route** cho các chức năng này
+
+Tất cả các file và thư mục bên trong **"auth"** đều được thiết kế dành riêng cho việc triển khai các chức năng đăng nhập và đăng ký.
+
+Để **tích hợp Cleck Auth**, chúng ta cần làm theo các bước hướng dẫn trong phần **"Tutorial"** của Cleck. Theo hướng dẫn, sẽ có một file mới mang tên **"middleware.ts"** được thêm vào dự án để **cấu hình Cleck**.
+
+
+---
+
+
+### Nhiệm vụ của bạn: Học Code và Xây Dựng Mô Hình Use Case
+
+- **Học Code**: 
+  - Nghiên cứu và làm quen với Cleck Auth để hiểu cách hoạt động của nó.
+
+- **Xây Dựng Mô Hình Use Case**:
+  - Phác thảo mô hình Use Case Diagram cho chức năng đăng nhập và đăng ký. 
+  - Chú ý đến các đối tượng liên quan và các tương tác giữa người dùng và hệ thống.
+  - Đảm bảo mô hình phản ánh chính xác quy trình và luồng công việc trong hệ thống.
+
+---

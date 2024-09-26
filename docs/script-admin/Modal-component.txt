@@ -1,0 +1,47 @@
+
+
+## Quy Trình Phát Triển Modal cho Dự Án
+
+### 1. Tạo Modal Component trong Thư Mục `ui`
+- **Mục đích**: Định dạng một modal (hộp thoại) với các thông tin như tiêu đề, mô tả, và các thuộc tính cần thiết khác.
+- **Thực hiện**:
+  - Tạo một file `modal.tsx` trong thư mục `components/ui`.
+  - File này chứa cấu trúc và logic hiển thị modal, bao gồm các props như `title`, `description`, `isOpen`, và `onClose`.
+  - Sử dụng component `Dialog` để định dạng giao diện của modal.
+
+### 2. Quản Lý Trạng Thái Modal với `zustand`
+- **Mục đích**: Quản lý trạng thái của modal (mở hoặc đóng) trong toàn bộ ứng dụng một cách dễ dàng.
+- **Thực hiện**:
+  - Tạo thư mục `hooks` và tạo file `use-store-modal.tsx`.
+  - Sử dụng thư viện `zustand` để tạo một custom hook quản lý trạng thái modal:
+    - `isOpen`: Trạng thái mở/đóng của modal.
+    - `onOpen`: Hàm để mở modal.
+    - `onClose`: Hàm để đóng modal.
+  - Hook này giúp bạn dễ dàng truy cập và điều khiển trạng thái của modal từ bất kỳ đâu trong ứng dụng.
+
+### 3. Tạo Component `StoreModal` để Hiển Thị Modal
+- **Mục đích**: Tạo một modal riêng biệt để thử nghiệm và hiển thị khi cần thiết.
+- **Thực hiện**:
+  - Tạo thư mục `modals` trong `components` và tạo file `store-modal.tsx`.
+  - Component này sử dụng `useStoreModal` để nhận trạng thái và các hàm điều khiển modal.
+  - Gọi `Modal` component với các props như `title`, `description`, `isOpen`, và `onClose` để hiển thị giao diện và nội dung của modal.
+  - Nội dung modal hiện tại chỉ chứa một thông báo tạm thời, có thể thay đổi hoặc thêm form tạo cửa hàng trong tương lai.
+
+### 4. Tạo Component `ModalProvider` để Quản Lý Modal Một Cách An Toàn
+- **Mục đích**: Đảm bảo modal được quản lý và hiển thị an toàn trên client-side, tránh lỗi render không đồng bộ giữa server và client.
+- **Thực hiện**:
+  - Tạo thư mục `providers` và file `modal-provider.tsx`.
+  - Sử dụng `useState` để quản lý trạng thái `isMounted`.
+  - `useEffect` để đặt `isMounted` thành `true` khi component được gắn vào DOM, giúp đảm bảo modal chỉ hiển thị khi đã sẵn sàng trên client.
+  - Nếu `isMounted` là `false`, component sẽ không render gì cả, tránh lỗi không đồng bộ.
+  - Sau khi `isMounted` là `true`, `ModalProvider` sẽ render `StoreModal`.
+
+### 5. Tích Hợp và Kiểm Tra Modal trong Trang `SetupPage`
+- **Mục đích**: Kiểm tra và mở modal ngay khi người dùng truy cập trang `SetupPage`.
+- **Thực hiện**:
+  - Cập nhật file `page.tsx` trong thư mục gốc (`root`) của dự án.
+  - Sử dụng `useEffect` để tự động gọi `onOpen` (mở modal) nếu modal đang đóng (`isOpen` là `false`).
+  - Kiểm tra xem modal có hiển thị đúng và hoạt động theo ý muốn hay không.
+
+
+
