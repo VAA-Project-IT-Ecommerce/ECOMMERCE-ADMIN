@@ -11,7 +11,7 @@ const SetupPage = () => {
       onOpen();
     }
   }, [isOpen, onOpen]);
-  return <div className="p-4">Root page</div>;
+  return null; //khôngh cần thiết trả lại cái gì cả vì trang này hỗ trợ tạo một hôpj thoại thôi
 };
 
 export default SetupPage;
