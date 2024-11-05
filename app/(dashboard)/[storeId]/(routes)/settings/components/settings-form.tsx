@@ -14,6 +14,7 @@ import {
 import { Heading } from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { useOrigin } from "@/hooks/use-origin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Store } from "@prisma/client";
 import axios from "axios";
@@ -29,19 +30,20 @@ const formSchema = z.object({
 });
 
 interface SettingsFormProps {
-  initiaData: Store;
+  initialData: Store;
 }
 
 type SettingsFormValues = z.infer<typeof formSchema>;
-export const SettingsForm: React.FC<SettingsFormProps> = ({ initiaData }) => {
+export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
+  const origin = useOrigin();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: initiaData,
+    defaultValues: initialData,
   });
 
   const onSubmit = async (data: SettingsFormValues) => {
