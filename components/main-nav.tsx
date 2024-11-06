@@ -6,12 +6,14 @@ import { useParams, usePathname } from "next/navigation";
 import React from "react";
 import {
   FiSettings,
-  FiGrid,
-  FiList,
+  FiTag,
+  FiBarChart2,
+  FiArchive,
+  FiLayers,
+  FiShoppingCart,
   FiDroplet,
-  FiMonitor,
 } from "react-icons/fi";
-import { MdOutlineStraighten } from "react-icons/md"; // Biểu tượng "Size" từ Material Design
+import { MdOutlineStraighten } from "react-icons/md"; // Icon cho "Size" từ Material Design
 
 export function MainNav({
   className,
@@ -23,39 +25,50 @@ export function MainNav({
     {
       href: `/${params.storeId}`,
       label: `Overview`,
-      icon: <FiGrid />,
+      icon: <FiBarChart2 />, // Icon bảng tổng quan
       active: pathname === `/${params.storeId}`,
     },
     {
       href: `/${params.storeId}/settings`,
       label: `Settings`,
-      icon: <FiSettings />,
+      icon: <FiSettings />, // Icon cài đặt
       active: pathname === `/${params.storeId}/settings`,
     },
-
+    {
+      href: `/${params.storeId}/billboards`,
+      label: `Billboards`,
+      icon: <FiTag />, // Icon biểu tượng (banner)
+      active: pathname === `/${params.storeId}/billboards`,
+    },
     {
       href: `/${params.storeId}/categories`,
       label: `Categories`,
-      icon: <FiList />,
+      icon: <FiLayers />, // Icon danh mục sản phẩm
       active: pathname === `/${params.storeId}/categories`,
     },
     {
       href: `/${params.storeId}/sizes`,
       label: `Sizes`,
-      icon: <MdOutlineStraighten />,
+      icon: <MdOutlineStraighten />, // Icon kích thước
       active: pathname === `/${params.storeId}/sizes`,
     },
     {
       href: `/${params.storeId}/colors`,
       label: `Colors`,
-      icon: <FiDroplet />,
+      icon: <FiDroplet />, // Icon màu sắc
       active: pathname === `/${params.storeId}/colors`,
     },
     {
-      href: `/${params.storeId}/billboards`,
-      label: `Billboards`,
-      icon: <FiMonitor />,
-      active: pathname === `/${params.storeId}/billboards`,
+      href: `/${params.storeId}/products`,
+      label: `Products`,
+      icon: <FiArchive />, // Icon sản phẩm
+      active: pathname === `/${params.storeId}/products`,
+    },
+    {
+      href: `/${params.storeId}/orders`,
+      label: `Orders`,
+      icon: <FiShoppingCart />, // Icon đơn hàng
+      active: pathname === `/${params.storeId}/orders`,
     },
   ];
   return (
