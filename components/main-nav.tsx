@@ -74,7 +74,7 @@ export function MainNav({
   return (
     <nav
       className={cn(
-        "flex items-center space-x-4 lg:space-x-6 p-4 bg-white shadow-md rounded-lg",
+        "flex items-center space-x-4 lg:space-x-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg",
         className
       )}
     >
@@ -83,10 +83,10 @@ export function MainNav({
           key={route.href}
           href={route.href}
           className={cn(
-            "flex items-center text-sm font-medium transition-all hover:text-primary hover:bg-gray-100 p-2 rounded-md",
+            "flex items-center text-sm font-medium transition-all hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md",
             route.active
-              ? "text-black dark:text-white bg-gray-200"
-              : "text-muted-foreground"
+              ? "text-black dark:text-white bg-gray-200 dark:bg-gray-700"
+              : "text-muted-foreground dark:text-gray-400"
           )}
         >
           {route.icon}

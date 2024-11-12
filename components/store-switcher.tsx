@@ -57,33 +57,35 @@ export default function StoreSwitcher({
           aria-expanded={open}
           aria-label="Select a store"
           className={cn(
-            "w-[200px] justify-between bg-white hover:bg-gray-100 transition-shadow shadow-sm rounded-lg",
+            "w-[200px] justify-between bg-white hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 transition-shadow shadow-sm rounded-lg",
             className
           )}
         >
           <StoreIcon className="mr-2 h-5 w-5 text-indigo-600" />
           {currentStore?.label || "Select Store"}
-          <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 text-gray-500" />
+          <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 text-gray-500 dark:text-gray-400" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[220px] p-2 rounded-lg bg-white shadow-lg border border-gray-200">
+      <PopoverContent className="w-[220px] p-2 rounded-lg bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700">
         <Command>
           <CommandInput
             placeholder="Search store..."
-            className="p-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="p-2 mb-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
           />
           <CommandList>
-            <CommandEmpty>No store found</CommandEmpty>
-            <CommandGroup heading="Stores">
+            <CommandEmpty className="dark:text-gray-400">
+              No store found
+            </CommandEmpty>
+            <CommandGroup heading="Stores" className="dark:text-gray-300">
               {formattedItems.map((store) => (
                 <CommandItem
                   key={store.value}
                   onSelect={() => onStoreSelect(store)}
-                  className="flex items-center justify-between p-2 rounded-md hover:bg-gray-100 cursor-pointer transition"
+                  className="flex items-center justify-between p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer transition"
                 >
                   <div className="flex items-center">
                     <StoreIcon className="mr-2 h-4 w-4 text-indigo-600" />
-                    <span>{store.label}</span>
+                    <span className="dark:text-white">{store.label}</span>
                   </div>
                   <Check
                     className={cn(
@@ -97,7 +99,7 @@ export default function StoreSwitcher({
               ))}
             </CommandGroup>
           </CommandList>
-          <CommandSeparator className="my-2 border-t border-gray-200" />
+          <CommandSeparator className="my-2 border-t border-gray-200 dark:border-gray-700" />
           <CommandList>
             <CommandGroup>
               <CommandItem
@@ -105,10 +107,10 @@ export default function StoreSwitcher({
                   setOpen(false);
                   storeModal.onOpen();
                 }}
-                className="flex items-center p-2 rounded-md hover:bg-gray-100 cursor-pointer transition"
+                className="flex items-center p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer transition"
               >
                 <PlusCircleIcon className="mr-2 h-5 w-5 text-green-500" />
-                Create Store
+                <span className="dark:text-white">Create Store</span>
               </CommandItem>
             </CommandGroup>
           </CommandList>
